@@ -1,0 +1,122 @@
+.container {
+  font-family: "Georgia", serif;
+}
+.row {
+  padding: 0;
+  margin-bottom: 10px;
+}
+h5, h6 {
+  margin: 0;
+}
+h4 {
+  margin-bottom: 15px;
+  text-align: right;
+}
+.glance {
+  height: 220px;
+}
+div.table-responsive {
+  margin-bottom: 30px;
+}
+.nro-filas {
+  font-size: 70%;
+  font-style: italic;
+}
+footer.row {
+  padding: 15px 0;
+  margin: 0 0 20px 0;
+  border: 1px solid black;
+}
+.logo {
+  width: 220px;
+}
+.mail-image {
+  width: 50px;
+}
+.main2 {
+  padding-top: 30px;
+  border-top: 4px solid darkgrey;
+}
+/* ----------------Table Filter and DataTable--------------*/
+#filter {
+  margin-bottom: 15px;
+}
+#filter>h3 {
+  font-size: 18px;
+  background-color: #212529;
+  color: white;
+}
+legend.card-title {
+  font-size: 18px;
+  margin-bottom: 0.4rem;
+}
+#filter>div.card-body {
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+}
+div#DataTables_Table_0_filter,div#Stats2_filter,div#Stats3_filter,div#Stats4_filter,div#Stats5_filter {
+   text-align: right;
+}
+
+/* ----------------NAV BAR--------------*/
+nav.row {
+  border: 1px solid black;
+}
+.current {
+  background-color: darkgrey;
+}
+li a {
+  color: black;
+  font-weight: bold;
+}
+/* ----------------FONT SIZE--------------*/
+p, h5 {
+  font-size: 14px;
+  text-indent: 10%;
+}
+h6 {
+  font-size: 10px;
+}
+/* ----------------MEDIA QUERY min--------------*/
+@media (min-width:380px) {
+  .btn {
+    font-size: 16px;
+  }
+}
+@media (min-width:768px) {
+  .btn {
+    font-size: 18px;
+  }
+  nav.row {
+    margin: 0 0 40px 0;
+  }
+}
+@media (min-width:992px) {
+  .btn {
+    font-size: 22px;
+  }
+  h5, p {
+    font-size: 16px;
+  }
+}
+/* ----------------MEDIA QUERY MAX--------------*/ 
+@media (max-width:768px) {
+  .btn {
+    white-space: normal;
+  }
+}
+@media (max-width:425px) {
+  table.dataTable.table-sm>thead>tr>th {
+    padding-right: 0px;
+  }
+}
+@media (max-width:380px) {
+  .logo {
+    width: 180px;
+  }
+}
+@media (max-width:320px) {
+  .logo {
+    width: 150px;
+  }
+}

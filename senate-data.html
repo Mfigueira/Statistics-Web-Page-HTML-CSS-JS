@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TGIF Senate Data</title>
+    <link rel="shortcut icon" href="images/tgfi_icon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/fh-3.1.4/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="colorbox-master/example1/colorbox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+  </head>
+  <body class="senate main-data">
+    <div class="container">
+      <header class="row align-items-center">
+        <div class="col">
+          <a href="home.html"><img class="logo" src="images/tgfi_logo.png" alt="TGFI Logo"></a>
+        </div>
+        <div class="col text-right">
+          <h5><a href="mailto:info@tgif.net"><img src="images/mail_image.png" class="mail-image" alt="mail emoji">info@tgif.net</a></h5>
+        </div>
+      </header>
+      <nav class="row">
+        <div class="col">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item dropdown current">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="house-data.html">House</a>
+                <a class="dropdown-item" href="senate-data.html">Senate</a> 
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="house-attendance.html">House</a>
+                <a class="dropdown-item" href="senate-attendance.html">Senate</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="house-loyalty.html">House</a>
+                <a class="dropdown-item" href="senate-loyalty.html">Senate</a>
+              </div>
+            </li>
+          </ul>
+        </div>    
+      </nav>
+      <section class="row">  
+        <div class="col col-lg-8">
+          <h2>Senators</h2>
+          <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+        </div>
+      </section>
+      <main class="row" id="app">
+        <div class="col-12">
+          <div class="card" id="filter">
+            <h3 class="card-header">Table Filter <span class="nro-filas">(showing <span id="rowsShown"></span> of <span id="rowsTotal"></span> total results)</span></h3>
+            <div class="row card-body">
+              <fieldset class="col-12 col-md-6">
+                <legend class="card-title">Filter by Party:</legend>
+                <label>
+                  <input type="checkbox" name="party-filter" value="D" checked> Democrat
+                </label>
+                <label>
+                  <input type="checkbox" name="party-filter" value="R" checked> Republican
+                </label>
+                <label>
+                  <input type="checkbox" name="party-filter" value="I" checked> Independent
+                </label>
+              </fieldset>
+              <fieldset class="col-12 col-md-6">
+                <legend class="card-title">Filter by State:</legend>
+                <select class="custom-select" id="state-filter" name="state-filter">
+                  <option value="">All</option>
+                  <option v-for="state in states" v-bind:value="state">{{state}}</option>
+                </select>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 table-responsive main-table">
+          <table class="table table-borderless table-sm table-hover uptable"> 
+            <thead class="thead-dark">
+              <tr>
+                <th v-for="th in table_header">{{th}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="member in members" v-bind:class="member.party">
+                <td><a class="locura" v-bind:href="member.url">{{member.last_name}}, {{member.first_name}} {{member.middle_name}}</a></td> 
+                <td>{{member.party}}</td>
+                <td>{{member.state}}</td>
+                <td>{{member.seniority}}</td>
+                <td>{{member.votes_with_party_pct}} %</td>
+              </tr>
+            </tbody> 
+          </table>
+        </div>
+      </main>
+      <footer class="row align-items-center">
+        <div class="col">
+          <h6 class="text-center">&copy; 2016 TGIF | All Rights Reserved</h6>
+        </div>
+      </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/fh-3.1.4/datatables.min.js"></script>
+    <script type="text/javascript" src="colorbox-master/jquery.colorbox-min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
